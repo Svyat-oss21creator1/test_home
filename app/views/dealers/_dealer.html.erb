@@ -1,0 +1,12 @@
+<div id="<%= dom_id dealer %>">
+  <p>
+    <strong>Dealer</strong>
+    <%= dealer.name %>
+  </p>
+  <% dealer.cars.each do |car|%>
+  <p>
+  <%= car.name%>  <% link_to "View Car", car%>
+  </p>
+  <% end %>
+
+</div>

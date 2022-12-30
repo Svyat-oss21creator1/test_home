@@ -1,0 +1,21 @@
+<div id="<%= dom_id car %>"> 
+    <p>
+    <strong>Name:</strong>
+    <%=car.name%> 
+    </p>  
+    <p>
+    <strong>Dealer:</strong>
+    <%=link_to car.dealer.name, car.dealer%> 
+    </p> 
+    <strong>Model:</strong>
+    <%=link_to car.model.name, car.model%> 
+    </p>
+    
+
+  <p>
+    <strong>Price:</strong>
+    <%= car.price %>
+  </p>
+   
+  
+</div>
