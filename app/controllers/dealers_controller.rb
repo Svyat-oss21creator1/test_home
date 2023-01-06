@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DealersController < ApplicationController
-  before_action :set_dealer, only: %i[ show edit update destroy ]
+  before_action :set_dealer, only: %i[show edit update destroy]
 
   # GET /dealers or /dealers.json
   def index
@@ -7,8 +9,7 @@ class DealersController < ApplicationController
   end
 
   # GET /dealers/1 or /dealers/1.json
-  def show
-  end
+  def show; end
 
   # GET /dealers/new
   def new
@@ -16,8 +17,7 @@ class DealersController < ApplicationController
   end
 
   # GET /dealers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /dealers or /dealers.json
   def create
@@ -25,7 +25,7 @@ class DealersController < ApplicationController
 
     respond_to do |format|
       if @dealer.save
-        format.html { redirect_to dealer_url(@dealer), notice: "Dealer was successfully created." }
+        format.html { redirect_to dealer_url(@dealer), notice: 'Dealer was successfully created.' }
         format.json { render :show, status: :created, location: @dealer }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class DealersController < ApplicationController
   def update
     respond_to do |format|
       if @dealer.update(dealer_params)
-        format.html { redirect_to dealer_url(@dealer), notice: "Dealer was successfully updated." }
+        format.html { redirect_to dealer_url(@dealer), notice: 'Dealer was successfully updated.' }
         format.json { render :show, status: :ok, location: @dealer }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class DealersController < ApplicationController
     @dealer.destroy
 
     respond_to do |format|
-      format.html { redirect_to dealers_url, notice: "Dealer was successfully destroyed." }
+      format.html { redirect_to dealers_url, notice: 'Dealer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dealer
-      @dealer = Dealer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dealer_params
-      params.require(:dealer).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dealer
+    @dealer = Dealer.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def dealer_params
+    params.require(:dealer).permit(:name)
+  end
 end

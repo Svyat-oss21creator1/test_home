@@ -1,0 +1,8 @@
+%p{:style => "color: green"}= notice
+%h1 Models
+#models
+  - @models.each do |model|
+    = render model
+    %p
+      = link_to "Show this model", model
+= link_to "New model", new_model_path

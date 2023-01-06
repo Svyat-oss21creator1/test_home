@@ -1,0 +1,11 @@
+%div{:id => "#{dom_id brand}"}
+  %h2
+    %strong Brand:
+    = brand.name
+  - brand.models.each do |model|
+    %p
+      = model.name
+      = link_to"View Model", model
+  %p
+    %strong Description:
+    = brand.description

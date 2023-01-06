@@ -1,0 +1,16 @@
+%div{:id => "#{dom_id model}"}
+  %p
+    %strong Name:
+    = model.name
+  %p
+    %strong Brand:
+    = link_to model.brand.name,  model.brand
+  %p
+    %strong Cars count:
+    = model.cars_count
+  %p
+    %strong Parent:
+    = model.parent_id
+  %p
+    %strong Description:
+    = model.description
