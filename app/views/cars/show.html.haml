@@ -1,6 +1,9 @@
 %p{:style => "color: green"}= notice
 = render @car
+= image_tag(@car.image)
 %div
+  = link_to favorite_text, favorites_update_path(car: @car), id:'favorite_link', remote: true
+  |
   = link_to "Edit this car", edit_car_path(@car)
   |
   \#{link_to "Back to cars", cars_path}

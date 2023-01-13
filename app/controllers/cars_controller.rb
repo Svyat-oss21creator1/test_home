@@ -13,7 +13,9 @@ class CarsController < ApplicationController
   end
 
   # GET /cars/1 or /cars/1.json
-  def show; end
+  def show
+    @favorite_exists = Favorite.where(car: @car, user: current_user) != []
+  end
 
   # GET /cars/new
   def new
@@ -70,7 +72,7 @@ class CarsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def car_params
-    params.require(:car).permit(:name, :price, :dealer_id, :model_id)
+    params.require(:car).permit(:name, :price, :dealer_id, :model_id, :image)
   end
 
   def set_dealer

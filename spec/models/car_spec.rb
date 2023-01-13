@@ -3,21 +3,29 @@
 require 'rails_helper'
 
 RSpec.describe Car, type: :model do
+  before do
+    let(:car) { Car.new(:name) }
+    it 'is invalid without name'
+    expect(car.name).to_not nil
+    car.valid?
+    it 'be able to save car'
+    expect(car.save).to eq(true)
+  end
+end
+context 'scope test' do
+  let(:params) { { name: 'Svyat', price: 100 } }
   before(:each) do
-    @cars = Car.create!(name: 'BMW')
+    Car.create(params)
+    Car.create(params)
+    Car.create(params.merge(active: false))
+    Car.create(params.merge(active: false))
+  end
 
-    describe 'validations' do
-      it 'should not let a car without name' do
-        @cars.name = nil
-        expect(@cars).to_not be_valid
+  it 'should be able to select active cars' do
+    expect(Car.active.count).to eq(3)
 
-        describe 'validations' do
-          it 'should not let a car without price' do
-            @cars.price = nil
-            expect(@cars).to_not be_valid
-          end
-        end
-      end
+    it 'should be able to select active cars' do
+      expect(Car.inactive.count).to eq(2)
     end
   end
 end

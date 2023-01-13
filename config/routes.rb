@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
+  get 'favorites/update'
+  mount Converter::Currency => '/api'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
@@ -8,10 +10,5 @@ Rails.application.routes.draw do
   resources :models
   resources :dealers
   resources :cars
-  root 'cars#index'
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root 'cars#index'  
 end

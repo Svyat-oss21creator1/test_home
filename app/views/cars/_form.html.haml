@@ -20,5 +20,8 @@
     %p Model name:
     = form.select :model_id, options_for_select(@models.collect{ |m|[m.name, m.id]})
   %p
+  .field
+  = form.label :image
+  = form.file_field :image
   %div
     = form.submit

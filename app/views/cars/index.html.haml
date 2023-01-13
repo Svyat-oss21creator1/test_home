@@ -2,8 +2,11 @@
 %h1 Cars
 #cars
   - @cars.each do |car|
-    = render car
+    = render car    
     %p
-      = link_to "Show this car", car
-= link_to "Back to Dealers",  dealers_path
+      = link_to "Show this car", car    
+= link_to "Back to Dealers", dealers_path
 = link_to "New car", new_car_path
+  %h1 Favorite
+  - current_user.favorites.each do |favorite|
+  Your Favorite: #{link_to favorite.car.name, favorite.car}

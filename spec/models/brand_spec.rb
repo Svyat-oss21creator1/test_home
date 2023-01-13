@@ -3,13 +3,17 @@
 require 'rails_helper'
 
 RSpec.describe Brand, type: :model do
-  before(:each) do
-    @brands = Brand.create!(name: 'BMW')
-
+  before do
+    let(:brand) { Brand.new(:name, :email) }
     describe 'validations' do
-      it 'should not let a brand without name' do
-        @brand.name = nil
-        expect(@brand).to_not be_valid
+      it 'name eq name' do
+        expect(brand.name).to eq 'Svyat'
+      end
+      it 'is not valid without name' do
+        expect(brand).to_not be_valid
+      end
+      it 'is not valid if name is not 4 chars' do
+        expect(brand.name.length).to eq(4)
       end
     end
   end

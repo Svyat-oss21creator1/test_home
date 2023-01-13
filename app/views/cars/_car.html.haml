@@ -1,20 +1,10 @@
-%div{:id => "#{dom_id car}"}
-%table.table
-  %thead
-    %tr
-      %th{scope: "col"} name
-      %th{scope: "col"} Dealer
-      %th{scope: "col"} Model
-      %th{scope: "col"} Price
-    
-  %tbody
-    
-    - Car.all.each do |car|
-      %tr
+%div{:id => "#{dom_id car}"}     
         
-        %td= car.name
-        %td= link_to car.dealer.name, car.dealer
-        %td= link_to car.model.name, car.model
-        %td= car.price
-
-  
+        %p= car.name
+        %strong Dealer 
+        %p= link_to car.dealer.name, car.dealer
+        %strong Model 
+        %p= link_to car.model.name, car.model
+        %strong Price 
+        %p= car.price
+ 
